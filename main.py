@@ -16,7 +16,7 @@ st.markdown("**굵은 글씨**와 *이탤릭체* 사용 가능")
 st.header("헤더입니다.")
 st.subheader("서브헤더입니다")
 st.caption("캡션(설명)입니다.")
-st.code( a=3)
+st.code(print('hello'), language='python')
 
 #수식표시 
 st.latex(r'''
