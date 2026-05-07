@@ -24,7 +24,7 @@ a + a r^1 + a r^2 + a r^3 ''')
 
 df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 for i in range(len(df)):
-    st.text(f'위도: {df.iloc[i]['위도']} 경도: {df.iloc[i]['경도']})
+    st.write(f"위도: {df.iloc[i]['위도']} 경도: {df.iloc[i]['경도']}")
     #st.map(df.iloc[i]['위도'], df.iloc[i]['경도'])
 
 #2. 데이터 준비 (데이터 가공 단계에서 학생들이 채울 부분)
