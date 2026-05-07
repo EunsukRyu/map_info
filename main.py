@@ -24,7 +24,8 @@ a + a r^1 + a r^2 + a r^3 ''')
 
 df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 for i in range(len(df)):
-    st.map([df.iloc[i]['위도'], df.iloc[i]['경도']])
+    st.text(f'위도: {df.iloc[i]['위도']} 경도: {df.iloc[i]['경도']})
+    #st.map(df.iloc[i]['위도'], df.iloc[i]['경도'])
 
 #2. 데이터 준비 (데이터 가공 단계에서 학생들이 채울 부분)
 # 실제로는 CSV나 GPX 파일을 불러오도록 해야, 테스트용으로 데이터를 직접 넣었습니다.
