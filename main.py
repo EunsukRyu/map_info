@@ -22,8 +22,8 @@ courses = {
 st.sidebar.header("📍 코스 선택")
 selected_course = st.sidebar.selectbox("가고 싶은 코스를 선택하세요", list(courses.keys()))
 
-# 4. 지도 생성 및 마커 표시 (7월 커리큘럼: 지도 시각화 단계)
-m = folium.Map(location=[37.5665, 126.9780], zoom_start=15)
+# 4. 지도 생성 및 마커 표시 (지도 시각화 단계)
+m = folium.Map(location=[37.40583317, 126.7214872], zoom_start=15)
 
 # 선택된 코스 정보 가져오기
 info = courses[selected_course]
