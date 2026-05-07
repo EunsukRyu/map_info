@@ -10,6 +10,21 @@ st.set_page_config(page_title="등산 메이트", layout="wide")
 st.title("🏔️ 2026 학교 등산 행사 안내 지도")
 st.markdown("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입니다.")
 st.markdown("왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요.")
+st.markdown("# 큰 제목(Markdown)")
+st.markdown("**굵은 글씨**와 *이탤릭체* 사용 가능")
+
+st.header("헤더입니다.")
+st.subheader("서브헤더입니다")
+st.caption("캡션(설명)입니다.")
+st.code(print("hello"), language="python")
+
+#수식표시 
+st.latex(r'''
+a + a r^1 + a r^2 + a r^3 ''')
+
+df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
+for i in range(len(df)):
+    st.map([df.iloc[i]['위도'], df.iloc[i]['경도']])
 
 #2. 데이터 준비 (데이터 가공 단계에서 학생들이 채울 부분)
 # 실제로는 CSV나 GPX 파일을 불러오도록 해야, 테스트용으로 데이터를 직접 넣었습니다.
@@ -28,7 +43,7 @@ m = folium.Map(location=[37.40583317, 126.7214872], zoom_start=15)
 # 선택된 코스 정보 가져오기
 info = courses[selected_course]
 
-# 지도에 마커 찍기 (반복문/if문 활용 교육 가능)
+# 지도에 마커 찍기 (반복문/if문 활용 가능)
 folium.Marker(
     [info["lat"], info["lon"]],
     popup=selected_course,
