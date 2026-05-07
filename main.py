@@ -23,7 +23,8 @@ st.latex(r'''
 a + a r^1 + a r^2 + a r^3 ''')
 
 df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
-df_latlon=df[['위도', '경도']]
+df_latlon = df[['위도', '경도']]
+df_latlon = df_latlon.rename(columns={'위도':'lat', '경도':'lon'})
 st.map(df_latlon)
 
 #2. 데이터 준비 (데이터 가공 단계에서 학생들이 채울 부분)
