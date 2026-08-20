@@ -15,14 +15,14 @@ st.set_page_config(
 st.title("🌳😁 2026 학교 등산 행사 안내 지도")
 st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입니다. 왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요!")
 
-# 2. 데이터 불러오기 및 오타 수정 (read_excl -> read_excel)
+# 2. 데이터 불러오기
 #@st.cache_data
 def load_data():
-    try:
+    #try:
         df = pd.read_excel('등산경로.xlsx')
-    except Exception:
+    #except Exception:
         # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
-        df = pd.read_csv('등산경로.csv', encoding='utf-8')
+        #df = pd.read_csv('등산경로.csv', encoding='utf-8')
     
     # 이미지 파일명 매칭 (예: A코스가온어린이공원.jpg)
     df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
@@ -172,6 +172,9 @@ with col2:
         st.info("👈 왼쪽 사이드바에서 특정 코스(A~E)를 선택하면 예상 소요시간, 주의사항 및 포인트별 사진을 상세히 보실 수 있습니다.")
         
         st.markdown("### 📋 전체 코스 개요")
+        for k, v in course_info.items():
+            st.markdown(f"- **{k}**: {v['desc']} *(소요시간: {v['time']})*")
+            
         summary_list = []
         for c_code in unique_courses:
             c_df = df[df['코스'] == c_code]
