@@ -117,9 +117,9 @@ for course_name, group in df.groupby('코스'):
             <h4 style="margin:5px 0; color:#2c3e50;">{row['위치명']}</h4>
             <p style="margin:2px; font-size:12px; color:#7f8c8d;">{row['코스']}</p>
             <hr style="margin:5px 0; border:0; border-top:1px solid #ddd;">
-            <img src="{img_file}" width="180px" style="border-radius:6px; margin-top:5px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/180x120?text=No+Image';">
         </div>
         '''
+        #<img src="{img_file}" width="180px" style="border-radius:6px; margin-top:5px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/180x120?text=No+Image';">
         
         folium.Marker(
             location=[row['위도'], row['경도']],
