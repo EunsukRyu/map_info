@@ -16,23 +16,10 @@ st.title("🌳😁 2026 학교 등산 행사 안내 지도")
 st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입니다. 왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요!")
 
 # 2. 데이터 불러오기
-#@st.cache_data
-#def load_data():
-    #try:
-        #df = pd.read_excel('등산경로.xlsx')
-    #except Exception:
-        # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
-        #df = pd.read_csv('등산경로.csv', encoding='utf-8')
-    
-    # 이미지 파일명 매칭 (예: A코스가온어린이공원.jpg)
-        #df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
-    #return df
-
-#df = load_data()
 df = pd.read_csv('등산경로.csv', encoding='utf-8')
 df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
 
-# 2-1. 코스별 세부 정보 사전 설정 (소요시간, 색상, 주의사항 등)
+# 2-1. 코스별 세부 정보 사전 설정 (소요시간, 주의사항 등)
 course_info = {
     "A코스": {
         "color": "blue",
@@ -87,15 +74,15 @@ else:
     filtered_df = df[df['코스'] == selected_course].copy()
 
 # 4. 지도 생성 및 중심점/줌레벨 자동 설정
-if not filtered_df.empty:
-    center_lat = filtered_df['위도'].mean()
-    center_lon = filtered_df['경도'].mean()
-    zoom_lvl = 15 if selected_course != "전체 코스 보기" else 13
-else:
-    center_lat, center_lon = 37.40583317, 126.7214872
-    zoom_lvl = 13
+#if not filtered_df.empty:
+#    center_lat = filtered_df['위도'].mean()
+#    center_lon = filtered_df['경도'].mean()
+#    zoom_lvl = 15 if selected_course != "전체 코스 보기" else 13
+#else:
+    #center_lat, center_lon = 37.40583317, 126.7214872
+    #zoom_lvl = 13
 
-m = folium.Map(location=[center_lat, center_lon], zoom_start=zoom_lvl)
+m = folium.Map(location=[37.40583317, 126.7214872], zoom_start=13)
 
 # 4-1. 코스별 마커 및 경로 선(PolyLine) 시각화
 for course_name, group in df.groupby('코스'):
