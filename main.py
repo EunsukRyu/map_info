@@ -16,17 +16,17 @@ st.title("🌳😁 2026 학교 등산 행사 안내 지도")
 st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입니다. 왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요!")
 
 # 2. 데이터 불러오기 및 오타 수정 (read_excl -> read_excel)
-@st.cache_data
+#@st.cache_data
 def load_data():
     try:
         df = pd.read_excel('등산경로.xlsx')
         df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
     except Exception:
         # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
-        #df = pd.read_csv('등산경로.csv', encoding='utf-8')
+        df = pd.read_csv('등산경로.csv', encoding='utf-8')
     
     # 이미지 파일명 매칭 (예: A코스가온어린이공원.jpg)
-    #df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
+    df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
     return df
 
 df = load_data()
