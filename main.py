@@ -20,7 +20,6 @@ st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입�
 def load_data():
     try:
         df = pd.read_excel('등산경로.xlsx')
-        df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
     except Exception:
         # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
         df = pd.read_csv('등산경로.csv', encoding='utf-8')
@@ -36,41 +35,41 @@ course_info = {
     "A코스": {
         "color": "blue",
         "time": "30분",
-        "desc": "가온어린이공원 출발",
+        "desc": "학교 출발",
         "notice": "경사가 완만하여 초보자에게 추천합니다.",
         "caution": "편안한 운동화를 착용하세요."
     },
     "B코스": {
         "color": "green",
         "time": "45분",
-        "desc": "서해랑길 94코스 경유",
+        "desc": "가온어린이공원 경유",
         "notice": "탁 트인 조망과 아름다운 자연 경관을 즐길 수 있습니다.",
         "caution": "낙엽 및 미끄럼 주의, 등산화 권장."
     },
     "C코스": {
         "color": "orange",
         "time": "40분",
-        "desc": "논현주공1단지 출발",
+        "desc": "서해랑길 94코스 출발",
         "notice": "접근성이 뛰어난 완주 코스입니다.",
         "caution": "수분 보충을 위해 물을 챙기세요."
     },
     "D코스": {
         "color": "red",
         "time": "25분",
-        "desc": "학교 옆 출발 빠른 코스",
+        "desc": "세븐일레븐 코스",
         "notice": "가장 빠르게 정상에 도착하는 직행 코스입니다.",
         "caution": "경사가 가파르니 스틱 사용을 권장합니다."
     },
     "E코스": {
         "color": "purple",
         "time": "35분",
-        "desc": "세븐일레븐 코스",
+        "desc": "논현주공1단지 코스",
         "notice": "편의점이 있어 간식 및 음료 구매가 편리합니다.",
         "caution": "쓰레기는 반드시 되가지고 내려오세요."
     }
 }
 
-# 3. 사이드바 - 코스 선택 (selectbos 오타 수정 -> selectbox)
+# 3. 사이드바 - 코스 선택 
 st.sidebar.header("📌 코스 선택")
 
 # Excel 데이터 내에 존재하는 실제 코스 목록 추출
