@@ -34,38 +34,38 @@ df = load_data()
 course_info = {
     "A코스": {
         "color": "blue",
-        "time": "30분",
+        "time": "4~5분",
         "desc": "학교 출발",
         "notice": "경사가 완만하여 초보자에게 추천합니다.",
         "caution": "편안한 운동화를 착용하세요."
     },
     "B코스": {
         "color": "green",
-        "time": "45분",
+        "time": "8~9분",
         "desc": "가온어린이공원 경유",
         "notice": "탁 트인 조망과 아름다운 자연 경관을 즐길 수 있습니다.",
         "caution": "낙엽 및 미끄럼 주의, 등산화 권장."
     },
     "C코스": {
         "color": "orange",
-        "time": "40분",
+        "time": "10~11분",
         "desc": "서해랑길 94코스 출발",
         "notice": "접근성이 뛰어난 완주 코스입니다.",
         "caution": "수분 보충을 위해 물을 챙기세요."
     },
     "D코스": {
         "color": "red",
-        "time": "25분",
+        "time": "13~14분",
         "desc": "세븐일레븐 코스",
-        "notice": "가장 빠르게 정상에 도착하는 직행 코스입니다.",
-        "caution": "경사가 가파르니 스틱 사용을 권장합니다."
+        "notice": "편의점이 있어 간식 및 음료 구매가 편리합니다.",
+        "caution": "쓰레기는 반드시 되가지고 내려오세요."
     },
     "E코스": {
         "color": "purple",
-        "time": "35분",
+        "time": "12~13분",
         "desc": "논현주공1단지 코스",
-        "notice": "편의점이 있어 간식 및 음료 구매가 편리합니다.",
-        "caution": "쓰레기는 반드시 되가지고 내려오세요."
+        "notice": "입구를 잘 찾아가야하는 코스입니다.",
+        "caution": "벌레에 물리지 않도록 벌레기피제 사용을 권장합니다."
     }
 }
 
@@ -172,10 +172,15 @@ with col2:
         st.info("👈 왼쪽 사이드바에서 특정 코스(A~E)를 선택하면 예상 소요시간, 주의사항 및 포인트별 사진을 상세히 보실 수 있습니다.")
         
         st.markdown("### 📋 전체 코스 개요")
-        for k, v in course_info.items():
-            st.markdown(f"- **{k}**: {v['desc']} *(소요시간: {v['time']})*")
-
-
+        summary_list = []
+        for c_code in unique_courses:
+            c_df = df[df['코스'] == c_code]
+            last_time = c_df[c_df['위치명'].str.contains('정상')]['소요시간'].values
+            t_str = last_time[0] if len(last_time) > 0 else c_df.iloc[-1]['소요시간']
+            summary_list.append({"코스": f"{c_code}코스", "총 소요시간(분:초)": t_str, "포인트 개수": len(c_df)})
+        
+        st.dataframe(pd.DataFrame(summary_list), hide_index=True, use_container_width=True)
+        
             
 """
 import streamlit as st
