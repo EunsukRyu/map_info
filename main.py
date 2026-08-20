@@ -17,7 +17,7 @@ st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입�
 
 # 2. 데이터 불러오기
 df = pd.read_csv('등산경로.csv', encoding='utf-8')
-df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
+df['이미지'] = 'images\' + df['코스'] + df['위치명'] + '.jpg'
 
 # 2-1. 코스별 세부 정보 사전 설정 (소요시간, 주의사항 등)
 course_info = {
