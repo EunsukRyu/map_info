@@ -91,7 +91,7 @@ for course_name, group in df.groupby('코스'):
         continue
     
     # 코스 식별 키 추출 (예: 'A코스(가온어린이공원)' -> 'A코스')
-    c_key = course_name.split('(')[0].strip()
+    c_key = course_name #.split('(')[0].strip()
     c_data = course_info.get(c_key, {"color": "gray", "time": "-", "notice": "", "caution": "안전에 유의하세요."})
     marker_color = c_data["color"]
     
@@ -138,7 +138,7 @@ with col2:
     st.subheader("ℹ️ 코스 상세 안내")
     
     if selected_course != "전체 코스 보기":
-        c_key = selected_course.split('(')[0].strip()
+        c_key = selected_course #.split('(')[0].strip()
         info = course_info.get(c_key, {})
         
         st.markdown(f"### 🚩 **{selected_course}**")
