@@ -82,7 +82,7 @@ else:
     #center_lat, center_lon = 37.40583317, 126.7214872
     #zoom_lvl = 13
 
-m = folium.Map(location=[37.40583317, 126.7214872], zoom_start=13)
+m = folium.Map(location=[37.40583317, 126.7214872], zoom_start=10)
 
 # 4-1. 코스별 마커 및 경로 선(PolyLine) 시각화
 for course_name, group in df.groupby('코스'):
@@ -142,7 +142,7 @@ with col2:
         info = course_info.get(c_key, {})
         
         st.markdown(f"### 🚩 **{selected_course}**")
-        st.info(f"🔔 {info.get('notice', '즐거운 등산 되세요!')}")
+        st.info(f"🔔 {info.get('notice')}")
         st.metric(label="⏱️ 예상 소요시간", value=info.get('time', '-'))
         st.warning(f"💊 **주의사항**: {info.get('caution', '등산화를 착용하세요.')}")
         
