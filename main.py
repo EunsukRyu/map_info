@@ -20,12 +20,13 @@ st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입�
 def load_data():
     try:
         df = pd.read_excel('등산경로.xlsx')
+        df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
     except Exception:
         # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
         #df = pd.read_csv('등산경로.csv', encoding='utf-8')
     
     # 이미지 파일명 매칭 (예: A코스가온어린이공원.jpg)
-    df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
+    #df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
     return df
 
 df = load_data()
