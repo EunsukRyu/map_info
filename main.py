@@ -17,18 +17,19 @@ st.caption("우리 동아리가 직접 발로 뛰며 만든 코스 가이드입�
 
 # 2. 데이터 불러오기
 #@st.cache_data
-def load_data():
+#def load_data():
     #try:
         #df = pd.read_excel('등산경로.xlsx')
     #except Exception:
         # 엑셀 파일 읽기 실패 시 CSV 읽기 시도
-        df = pd.read_csv('등산경로.csv', encoding='utf-8')
+        #df = pd.read_csv('등산경로.csv', encoding='utf-8')
     
     # 이미지 파일명 매칭 (예: A코스가온어린이공원.jpg)
         #df['이미지'] = df['코스'] + df['위치명'] + '.jpg'
-    return df
+    #return df
 
-df = load_data()
+#df = load_data()
+df = pd.read_csv('등산경로.csv', encoding='utf-8')
 
 # 2-1. 코스별 세부 정보 사전 설정 (소요시간, 색상, 주의사항 등)
 course_info = {
