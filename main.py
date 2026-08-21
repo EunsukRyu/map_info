@@ -142,7 +142,7 @@ with col2:
         c_key = selected_course + '코스'
         info = course_info.get(c_key, {})
         
-        st.markdown(f"### 🚩 **{selected_course}**")
+        st.markdown(f"### 🚩 **{selected_course}** 코스")
         st.info(f"🔔 {info.get('notice', '즐거운 등산 되세요!')}")
         st.metric(label="⏱️ 예상 소요시간", value=info.get('time', '-'))
         st.warning(f"💊 **주의사항**: {info.get('caution', '등산화를 착용하세요.')}")
